@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -19,7 +20,16 @@ public class CollisionHandler : MonoBehaviour
 
             default:
                 Debug.Log("Collided with something else");
+                ReloadLevel();
                 break;
         }
+    }
+
+    void ReloadLevel(){
+        // SceneManager.LoadScene("Sandbox");
+
+    
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // current scene index for the 'Level'
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
