@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8145586173320489951}
   - component: {fileID: 8145586173320489952}
   - component: {fileID: 3597882930234271221}
+  - component: {fileID: 8451384475064495643}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -256,6 +257,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.060956, z: 1}
   m_Center: {x: 0, y: -0.030478299, z: 0}
+--- !u!114 &8451384475064495643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972125108588309871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1473431c99149ea40b8e5fe2603d1d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3646673566436160661
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,14 +684,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
---- !u!198 &268173038353926492 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198100719057022332, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
-  m_PrefabInstance: {fileID: 74158180070384672}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &78526903642440468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4940884351362868, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
+  m_PrefabInstance: {fileID: 74158180070384672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &268173038353926492 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198100719057022332, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
   m_PrefabInstance: {fileID: 74158180070384672}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1270320685410153779
@@ -947,13 +960,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
---- !u!4 &7982782938754728125 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4940884351362868, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
-  m_PrefabInstance: {fileID: 7987423645677250441}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &7811155940824140533 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198100719057022332, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
+  m_PrefabInstance: {fileID: 7987423645677250441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7982782938754728125 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4940884351362868, guid: a3553fd250eb92d4091bebde350c6739, type: 3}
   m_PrefabInstance: {fileID: 7987423645677250441}
   m_PrefabAsset: {fileID: 0}
