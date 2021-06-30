@@ -3,8 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    //  Parameters
     [SerializeField] float invokeDelay = 1.0f;
+    [SerializeField] AudioClip crash;
+    [SerializeField] AudioClip win;
+
+    // CACHE
+    AudioSource myAudio;
+
+    // STATE
+    bool isTransitioning = false;
+
+    void Start()
+    {
+        myAudio = GetComponent<AudioSource>(); // audio
+    }
+
     private void OnCollisionEnter(Collision other) {
+        if (isTransitioning) return;
+        
         switch (other.gameObject.tag)
         {
             case "Friendly":
@@ -28,23 +45,27 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void StartCrashSequence(){
-        //disable movement component
-        GetComponent<Movement>().enabled = false;
-        // TODO: add SFX for crash
+        isTransitioning = true;
+        GetComponent<Movement>().enabled = false; //disable movement component
+        myAudio.Stop();
+        myAudio.PlayOneShot(crash);
         // TODO: add particle effects for crash
         //Reload level
         Invoke("ReloadLevel", invokeDelay);
+        
     }
 
     void StartNextLevelSequence(){
-        //disable movement component
-        GetComponent<Movement>().enabled = false;
+        isTransitioning = true;
+        GetComponent<Movement>().enabled = false; //disable movement component
+        myAudio.Stop();
+        myAudio.PlayOneShot(win);
 
-        // TODO: add SFX for win        
-        // TODO: add particle effects for crash
+       // TODO: add particle effects for crash
 
         //load next level level
         Invoke("LoadNextLevel", invokeDelay);
+
     }
 
     void ReloadLevel(){
@@ -52,6 +73,7 @@ public class CollisionHandler : MonoBehaviour
 
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // current scene index for the 'Level'
         SceneManager.LoadScene(currentSceneIndex);
+        isTransitioning = false;
     }
 
     void LoadNextLevel(){
@@ -64,5 +86,6 @@ public class CollisionHandler : MonoBehaviour
             nextSceneIndex = 0;
         }
         SceneManager.LoadScene(nextSceneIndex);
+        isTransitioning = false;
     }
 }
