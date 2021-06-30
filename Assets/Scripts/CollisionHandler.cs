@@ -7,9 +7,11 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float invokeDelay = 1.0f;
     [SerializeField] AudioClip crash;
     [SerializeField] AudioClip win;
+    [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] ParticleSystem winParticles;
 
     // CACHE
-    AudioSource myAudio;
+    AudioSource myAudio; // Audio
 
     // STATE
     bool isTransitioning = false;
@@ -25,15 +27,15 @@ public class CollisionHandler : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Friendly":
-                Debug.Log("Collided with Friendly");
+                // Debug.Log("Collided with Friendly");
                 break;
 
             case "Fuel":
-                Debug.Log("Collided with Fuel");
+                // Debug.Log("Collided with Fuel");
                 break;
 
             case "Finish":
-                Debug.Log("You Won!");
+                // Debug.Log("You Won!");
                 StartNextLevelSequence();
                 break;
 
@@ -47,25 +49,20 @@ public class CollisionHandler : MonoBehaviour
     void StartCrashSequence(){
         isTransitioning = true;
         GetComponent<Movement>().enabled = false; //disable movement component
-        myAudio.Stop();
-        myAudio.PlayOneShot(crash);
-        // TODO: add particle effects for crash
-        //Reload level
-        Invoke("ReloadLevel", invokeDelay);
+        myAudio.Stop(); // audio
+        myAudio.PlayOneShot(crash); // audio
+        crashParticles.Play(); // particles
+        Invoke("ReloadLevel", invokeDelay); //Reload level
         
     }
 
     void StartNextLevelSequence(){
         isTransitioning = true;
         GetComponent<Movement>().enabled = false; //disable movement component
-        myAudio.Stop();
-        myAudio.PlayOneShot(win);
-
-       // TODO: add particle effects for crash
-
-        //load next level level
-        Invoke("LoadNextLevel", invokeDelay);
-
+        myAudio.Stop(); // audio
+        myAudio.PlayOneShot(win); // audio
+        winParticles.Play(); // particles
+        Invoke("LoadNextLevel", invokeDelay); //load next level
     }
 
     void ReloadLevel(){
